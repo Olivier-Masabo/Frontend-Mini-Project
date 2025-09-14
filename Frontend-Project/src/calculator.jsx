@@ -15,7 +15,11 @@ function Calculator(){
     }
 
     const handleOutput =() =>{
-        setInput(eval(input).toString())
+        try {
+             setInput(eval(input).toString())
+        } catch (error) {
+          setInput("Error: can't calculate")  
+        }
     }
 
     return(
