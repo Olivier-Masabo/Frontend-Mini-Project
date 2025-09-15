@@ -40,7 +40,7 @@
       </div>
      </div>
       <h2>Heavy rain is expected in the daytime hours. Thehigh will be 25<sup>o</sup>C</h2>
-      <div className="grid grid-cols-5">
+      <div className="grid grid-cols-5 md:grid-cols-3">
         <div>
           <h3>wind</h3>
           <p>6 km/h</p>
