@@ -24,6 +24,45 @@
         
        </div>
      </div>
+     <div>
+      <h2 className="p-5">location,province, country</h2>
+     </div>
+     <div className="bg-sky-900 text-white w-[80%] p-5">
+     <h2>Current Weather</h2>  
+     <p>time</p>
+     <div className="flex gap-x-4 p-10">
+      <div>
+        real weather in <sup>o</sup>C
+      </div>
+      <div>
+      <h2>Mostly cloudy</h2>
+      <p>Feels like 25<sup>o</sup>C</p>
+      </div>
+     </div>
+      <h2>Heavy rain is expected in the daytime hours. Thehigh will be 25<sup>o</sup>C</h2>
+      <div className="grid grid-cols-5">
+        <div>
+          <h3>wind</h3>
+          <p>6 km/h</p>
+        </div>
+        <div>
+          <h3>Humidity</h3>
+          <p>50%</p>
+        </div>
+        <div>
+          <h3>Visibility</h3>
+          <p>10km</p>
+        </div>
+        <div>
+          <h3>Pressure</h3>
+          <p>1022 mb</p>
+        </div>
+        <div>
+          <h3>Dew pointer</h3>
+          <p>12<sup>o</sup></p>
+        </div>
+      </div>
+     </div>
       </>
     )
  }
