@@ -5,7 +5,6 @@ import Weather from './Weather'
 
 function App() {
 
-
   return (
     <div className="p-6">
       <h1 className="text-2xl font-bold mb-4 flex justify-center mx-auto">My Projects</h1>
