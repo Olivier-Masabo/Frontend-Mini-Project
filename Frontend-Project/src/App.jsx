@@ -17,6 +17,25 @@ function App() {
           Weather-App
         </Link>
       </nav>
+
+      <div className="max-w-3xl mx-auto mb-10 p-6 bg-white shadow-lg rounded-2xl mt-10">
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">
+          About Me
+        </h2>
+        <p className="text-gray-700 leading-relaxed">
+          I’m a passionate <span className="font-semibold text-blue-700">frontend developer</span> who is 
+          continuously improving skills and building real-world projects.  
+          I have hands-on experience with technologies like{" "}
+          <span className="font-semibold text-blue-600">HTML, CSS, Tailwind CSS, JavaScript, React.js</span>,  
+          and I’m exploring <span className="font-semibold text-green-600">Node.js and databases</span> to become a full-stack developer.  
+        </p>
+        <p className="mt-4 text-gray-700 leading-relaxed">
+          My focus is on creating clean, user-friendly, and responsive web 
+          applications while constantly learning best practices and modern tools 
+          to sharpen my craft.
+        </p>
+      </div>
+
       
   
       <Routes>

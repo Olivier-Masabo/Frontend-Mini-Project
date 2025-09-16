@@ -1,9 +1,39 @@
 import { Cloud, Wind, Droplets, Eye, Gauge, Thermometer } from "lucide-react";
+import { useEffect, useState } from "react";
 
 function Weather() {
+const[searching,setSearching] =useState("")
+const[info,setInfo]=useState([])
+const[loading,setLoading]=useState(false)
+const[error,setError]=useState("")
+
+useEffect(() =>{
+  if(searching.trim().length <3){
+    setInfo([])
+    setError("") 
+    return;
+  }
+  
+  const debouncing = setTimeout(() =>{
+    setLoading(true)
+    setError("")
+    fetch("https://api.weatherxu.com").then((res) => {
+      if(!res.ok)
+        throw new Error("API Issue")
+      return res.json()
+    }).then((data) =>{
+      if(data.result.length === 0){
+        setError("NO result found")
+      }
+      setInfo(data.result)
+    })
+    .catch(() => setError("Something went wrong, please try again."))
+    .finally(() => setLoading(false));
+  },500)
+  return () =>clearTimeout(debouncing)
+},[searching])
   return (
     <>
-     
       <h2 className="bg-gradient-to-r from-blue-600 to-green-500 text-3xl font-bold text-center p-6 text-white shadow-md">
         Weather App
       </h2>
@@ -14,13 +44,17 @@ function Weather() {
           <div className="relative">
             <input
               className="border-2 border-gray-400 rounded-lg p-2 pr-16 focus:outline-none "
-              type="text"
               placeholder="Enter location..."
+              type="text"
+              value={info}
+              onChange={(e) =>setSearching(e.target.value)}
             />
             <button className="absolute right-0 top-0 bottom-0 bg-gray-300 text-white px-3 hover:bg-gray-400 transition rounded cursor-pointer ">
               &#128269;
             </button>
           </div>
+          {loading && <p> loading...</p>}
+          {error && <p>{error}</p>}
           <button className="border-2 border-gray-700 rounded-xl px-4 py-2 hover:bg-gray-200 transition">
             Finded Location
           </button>
