@@ -18,8 +18,13 @@ function App() {
         </Link>
       </nav>
 
+      <Routes>
+        <Route path="/calculator" element={<Calculator />} />
+        <Route path="/weather" element={<Weather />} />
+      </Routes>
+
       <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-6 mb-10">
-        {/* About Me Card */}
+        
         <div className="p-6 bg-white shadow-lg rounded-2xl">
           <h2 className="text-2xl font-bold text-gray-800 mb-4">About Me</h2>
           <p className="text-gray-700 leading-relaxed">
@@ -43,7 +48,7 @@ function App() {
         <div className="p-6 bg-white shadow-lg rounded-2xl">
           <h2 className="text-2xl font-bold text-gray-800 mb-4">Tech & Goals</h2>
 
-          {/* Tech Stack */}
+          
           <h3 className="text-lg font-semibold text-blue-700 mb-2">Tech Stack</h3>
           <ul className="list-disc list-inside text-gray-700 mb-4">
             <li>React.js & JavaScript (Frontend)</li>
@@ -66,10 +71,7 @@ function App() {
 
       
   
-      <Routes>
-        <Route path="/calculator" element={<Calculator />} />
-        <Route path="/weather" element={<Weather />} />
-      </Routes>
+      
     </div>
   );
 }

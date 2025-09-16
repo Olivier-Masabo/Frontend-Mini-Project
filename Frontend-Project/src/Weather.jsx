@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 function Weather() {
 const[searching,setSearching] =useState("")
-const[info,setInfo]=useState([])
+const[info,setInfo]=useState(null)
 const[loading,setLoading]=useState(false)
 const[error,setError]=useState("")
 
@@ -22,11 +22,11 @@ useEffect(() =>{
         throw new Error("API Issue")
       return res.json()
     }).then((data) =>{
-      if(data.result.length === 0){
+      if(!data.currently){
         setError("NO result found")
       }
-      setInfo(data.result)
-    })
+      setInfo(data.result.currently)
+    })    
     .catch(() => setError("Something went wrong, please try again."))
     .finally(() => setLoading(false));
   },500)
@@ -46,7 +46,7 @@ useEffect(() =>{
               className="border-2 border-gray-400 rounded-lg p-2 pr-16 focus:outline-none "
               placeholder="Enter location..."
               type="text"
-              value={info}
+              value={searching}
               onChange={(e) =>setSearching(e.target.value)}
             />
             <button className="absolute right-0 top-0 bottom-0 bg-gray-300 text-white px-3 hover:bg-gray-400 transition rounded cursor-pointer ">
@@ -88,9 +88,9 @@ useEffect(() =>{
         <p className="text-sm text-gray-300">Updated: 09:00 AM</p>
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 p-6">
-          <div className="text-6xl font-bold">
-            24<sup>°C</sup>
-          </div>
+        { info &&  <div className="text-6xl font-bold">
+          <p>{info.temp_c}</p>
+          </div>}
           <div className="text-center md:text-left">
             <h2 className="text-xl font-semibold flex items-center gap-2">
               <Cloud /> Mostly Cloudy
@@ -98,7 +98,7 @@ useEffect(() =>{
             <p className="text-sm text-gray-300">Feels like 25°C</p>
           </div>
         </div>
-
+        
         <p className="italic text-sm text-gray-300 mb-5">
           Heavy rain is expected in the daytime hours. The high will be 25°C.
         </p>
