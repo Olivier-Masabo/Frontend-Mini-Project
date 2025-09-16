@@ -11,14 +11,16 @@ function Weather() {
       
       <div className="p-6 flex flex-col md:flex-row items-center justify-between gap-5 bg-gray-100">
         <div className="flex flex-wrap items-center gap-3">
-          <input
-            className="border-2 border-gray-400 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-            type="text"
-            placeholder="Enter location..."
-          />
-          <button className="bg-blue-500 text-white px-4 py-2 rounded-xl shadow hover:bg-blue-600 transition">
-            Search
-          </button>
+          <div className="relative">
+            <input
+              className="border-2 border-gray-400 rounded-lg p-2 pr-16 focus:outline-none "
+              type="text"
+              placeholder="Enter location..."
+            />
+            <button className="absolute right-0 top-0 bottom-0 bg-gray-300 text-white px-3 hover:bg-gray-400 transition rounded cursor-pointer ">
+              &#128269;
+            </button>
+          </div>
           <button className="border-2 border-gray-700 rounded-xl px-4 py-2 hover:bg-gray-200 transition">
             Finded Location
           </button>
