@@ -1,71 +1,79 @@
-import { useState } from "react"
-function Calculator(){
-    const[input, setInput]=useState('')
+import { useState } from 'react';
 
-    const handleClick =(value) =>{
-      setInput(input + value)
-    }
+export default function Calculator() {
+    const [input, setInput] = useState('');
+    const [result, setResult] = useState('');
 
-    const handleDelete =() =>{
-        setInput(input.slice(0,-1))
-    }
+    const handleClick = (value) => {
+        setInput(prev => prev + value);
+    };
 
-    const handleClear = () =>{
-        setInput("")
-    }
+    const handleClear = () => {
+        setInput('');
+        setResult('');
+    };
 
-    const handleOutput =() =>{
+    const handleDelete = () => {
+        setInput(prev => prev.slice(0, -1));
+    };
+
+    const handleOutput = () => {
         try {
-             setInput(eval(input).toString())
+            const evalResult = eval(input);
+            setResult(evalResult.toString());
+            setInput(evalResult.toString());
         } catch (error) {
-          setInput("Error: can't calculate")  
+            setResult('Error');
+            setInput('');
         }
-    }
+    };
 
-    return(
-        <>
-        <h2 className="bg-green-500 text-2xl font-bold text-center p-5">Simple Calculator</h2>
+    return (
+        <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center p-4">
+            <div className="bg-gray-900/90 backdrop-blur-xl rounded-3xl shadow-2xl border border-gray-700/50 p-6 w-full max-w-sm">
+                <div className="text-center mb-6">
+                    <h2 className="text-2xl font-bold text-white">Calculator</h2>
+                    <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mt-2 rounded-full"></div>
+                </div>
 
-        <div className="border-2 border-amber-600 w-[30%] h-[70vh] mx-auto bg-cyan-900 mt-10 p-5 text-right">
-            <div className="bg-green-700 text-black p-2 rounded-xl mt-8 ">
-            <input value={input} readOnly className="bg-transparent flex-1 text-right p-2 rounded-xl w-full outline-hidden text-2xl font-bold text-white" type="text" />
-            </div>
-            <div className=" flex gap-x-3 space-y-3 mt-3" >
-            <button onClick={() =>handleClear()} className="bg-green-300 text-black p-2 rounded-xl  w-[14%] h-12 font-bold cursor-pointer">AC</button>
-            <button onClick={() =>handleDelete()} className="bg-green-300 text-black p-2 rounded-xl w-[14%] h-12 font-bold  cursor-pointer">DE</button>
-            <button onClick={() => handleClick(".")} className="bg-green-300 text-black p-2 rounded-xl  w-[14%] h-12 font-bold cursor-pointer">.</button>
-            <button onClick={() => handleClick("/")} className="bg-green-300 text-black p-2 rounded-xl  w-[14%] h-12 font-bold cursor-pointer">/</button>
-            </div>
-            
-            <div className=" flex gap-x-3 space-y-3 mt-3" >
-            <button onClick={() =>handleClick("7")} className="bg-green-300 text-black p-2 rounded-xl  w-[14%] h-12 font-bold cursor-pointer">7</button>
-            <button onClick={() =>handleClick("8")} className="bg-green-300 text-black p-2 rounded-xl w-[14%] h-12 font-bold cursor-pointer">8</button>
-            <button onClick={() =>handleClick("9")} className="bg-green-300 text-black p-2 rounded-xl  w-[14%] h-auto font-bold cursor-pointer">9</button>
-            <button onClick={() =>handleClick("*")} className="bg-green-300 text-black p-2 rounded-xl  w-[14%] h-12 font-bold cursor-pointer">*</button>
-            </div>
+                <div className="bg-gray-800/70 rounded-2xl p-6 mb-6 border border-gray-700/50">
+                    <div className="text-gray-400 text-sm mb-1 h-4">
+                        {result && `= ${result}`}
+                    </div>
+                    <input 
+                        value={input || '0'} 
+                        readOnly 
+                        className="bg-transparent w-full text-right text-3xl font-light text-white outline-none" 
+                        type="text" 
+                    />
+                </div>
 
-            <div className=" flex gap-x-3 space-y-3 mt-3" >
-            <button onClick={() =>handleClick("4")} className="bg-green-300 text-black p-2 rounded-xl  w-[14%] h-12 font-bold cursor-pointer">4</button>
-            <button onClick={() =>handleClick("5")} className="bg-green-300 text-black p-2 rounded-xl w-[14%] h-12 font-bold cursor-pointer">5</button>
-            <button onClick={() =>handleClick("6")} className="bg-green-300 text-black p-2 rounded-xl  w-[14%] h-12 font-bold cursor-pointer">6</button>
-            <button onClick={() =>handleClick("+")} className="bg-green-300 text-black p-2 rounded-xl  w-[14%] h-12 font-bold cursor-pointer">+</button>
-            </div>
+                <div className="grid grid-cols-4 gap-3">
+                    <button onClick={handleClear} className="bg-red-500/80 hover:bg-red-500 text-white p-4 rounded-xl h-14 font-semibold transition-all duration-200 active:scale-95 shadow-lg hover:shadow-red-500/25">AC</button>
+                    <button onClick={handleDelete} className="bg-orange-500/80 hover:bg-orange-500 text-white p-4 rounded-xl h-14 font-semibold transition-all duration-200 active:scale-95 shadow-lg hover:shadow-orange-500/25">⌫</button>
+                    <button onClick={() => handleClick(".")} className="bg-blue-500/80 hover:bg-blue-500 text-white p-4 rounded-xl h-14 font-semibold transition-all duration-200 active:scale-95 shadow-lg hover:shadow-blue-500/25">•</button>
+                    <button onClick={() => handleClick("/")} className="bg-purple-500/80 hover:bg-purple-500 text-white p-4 rounded-xl h-14 font-semibold transition-all duration-200 active:scale-95 shadow-lg hover:shadow-purple-500/25 text-xl">÷</button>
 
-            <div className=" flex gap-x-3 space-y-3 mt-3" >
-            <button onClick={() =>handleClick("1")} className="bg-green-300 text-black p-2 rounded-xl  w-[14%] h-12 font-bold cursor-pointer">1</button>
-            <button onClick={() =>handleClick("2")} className="bg-green-300 text-black p-2 rounded-xl w-[14%] h-12 font-bold cursor-pointer">2</button>
-            <button onClick={() =>handleClick("3")} className="bg-green-300 text-black p-2 rounded-xl  w-[14%] h-12 font-bold cursor-pointer">3</button>
-            <button onClick={() =>handleClick("-")} className="bg-green-300 text-black p-2 rounded-xl  w-[14%] h-12 font-bold cursor-pointer">-</button>
-            </div>
+                    <button onClick={() => handleClick("7")} className="bg-gray-700/60 hover:bg-gray-600 text-white p-4 rounded-xl h-14 font-semibold transition-all duration-200 active:scale-95 shadow-lg">7</button>
+                    <button onClick={() => handleClick("8")} className="bg-gray-700/60 hover:bg-gray-600 text-white p-4 rounded-xl h-14 font-semibold transition-all duration-200 active:scale-95 shadow-lg">8</button>
+                    <button onClick={() => handleClick("9")} className="bg-gray-700/60 hover:bg-gray-600 text-white p-4 rounded-xl h-14 font-semibold transition-all duration-200 active:scale-95 shadow-lg">9</button>
+                    <button onClick={() => handleClick("*")} className="bg-purple-500/80 hover:bg-purple-500 text-white p-4 rounded-xl h-14 font-semibold transition-all duration-200 active:scale-95 shadow-lg hover:shadow-purple-500/25 text-xl">×</button>
 
-            <div className=" flex gap-x-3 space-y-3 mt-3">
-            <button onClick={() =>handleClick("00")} className="bg-green-300 text-black p-2 rounded-xl  w-[14%] h-12 font-bold cursor-pointer">00</button>
-            <button onClick={() =>handleClick("0")} className="bg-green-300 text-black p-2 rounded-xl w-[14%] h-12 font-bold cursor-pointer">0</button>
-            <button onClick={() => handleOutput()} className="bg-green-300 text-black p-2 rounded-xl  w-[30%] h-12 font-bold cursor-pointer">=</button>
+                    <button onClick={() => handleClick("4")} className="bg-gray-700/60 hover:bg-gray-600 text-white p-4 rounded-xl h-14 font-semibold transition-all duration-200 active:scale-95 shadow-lg">4</button>
+                    <button onClick={() => handleClick("5")} className="bg-gray-700/60 hover:bg-gray-600 text-white p-4 rounded-xl h-14 font-semibold transition-all duration-200 active:scale-95 shadow-lg">5</button>
+                    <button onClick={() => handleClick("6")} className="bg-gray-700/60 hover:bg-gray-600 text-white p-4 rounded-xl h-14 font-semibold transition-all duration-200 active:scale-95 shadow-lg">6</button>
+                    <button onClick={() => handleClick("-")} className="bg-purple-500/80 hover:bg-purple-500 text-white p-4 rounded-xl h-14 font-semibold transition-all duration-200 active:scale-95 shadow-lg hover:shadow-purple-500/25 text-xl">−</button>
+
+                    <button onClick={() => handleClick("1")} className="bg-gray-700/60 hover:bg-gray-600 text-white p-4 rounded-xl h-14 font-semibold transition-all duration-200 active:scale-95 shadow-lg">1</button>
+                    <button onClick={() => handleClick("2")} className="bg-gray-700/60 hover:bg-gray-600 text-white p-4 rounded-xl h-14 font-semibold transition-all duration-200 active:scale-95 shadow-lg">2</button>
+                    <button onClick={() => handleClick("3")} className="bg-gray-700/60 hover:bg-gray-600 text-white p-4 rounded-xl h-14 font-semibold transition-all duration-200 active:scale-95 shadow-lg">3</button>
+                    <button onClick={() => handleClick("+")} className="bg-purple-500/80 hover:bg-purple-500 text-white p-4 rounded-xl h-14 font-semibold transition-all duration-200 active:scale-95 shadow-lg hover:shadow-purple-500/25 text-xl">+</button>
+
+                    <button onClick={() => handleClick("0")} className="bg-gray-700/60 hover:bg-gray-600 text-white p-4 rounded-xl h-14 font-semibold transition-all duration-200 active:scale-95 shadow-lg col-span-2">0</button>
+                    <button onClick={() => handleClick("00")} className="bg-gray-700/60 hover:bg-gray-600 text-white p-4 rounded-xl h-14 font-semibold transition-all duration-200 active:scale-95 shadow-lg">00</button>
+                    <button onClick={handleOutput} className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white p-4 rounded-xl h-14 font-bold transition-all duration-200 active:scale-95 shadow-lg hover:shadow-emerald-500/30 text-xl">=</button>
+                </div>
             </div>
         </div>
-        </>
-    )
+    );
 }
-
-export default Calculator
