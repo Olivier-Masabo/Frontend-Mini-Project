@@ -1,4 +1,5 @@
 import { Routes,Route,Link } from 'react-router-dom'
+import { Navigate } from "react-router-dom";
 import './App.css'
 import Calculator from './calculator'
 import Weather from './Weather'
@@ -23,7 +24,8 @@ function App() {
       </nav>
 
       <Routes>
-        <Route path ="home" element={<Home/>}/>
+         <Route path="/" element={<Navigate to="/home" />} />
+         <Route path="/home" element={<Home />} />
         <Route path="/calculator" element={<Calculator />} />
         <Route path="/weather" element={<Weather />} />
       </Routes>

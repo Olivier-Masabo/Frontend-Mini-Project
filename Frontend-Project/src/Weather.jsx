@@ -4,13 +4,13 @@ import { useEffect, useState } from "react";
 function Weather() {
   const [searching, setSearching] = useState("");
   const [info, setInfo] = useState(null);
-  const [location, setLocation] = useState(null); // city + country
+  const [location, setLocation] = useState(null); 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const API_KEY = "6ddb7f1c400348e980464324252209"; // 🔑 your WeatherAPI key
+  const API_KEY = "6ddb7f1c400348e980464324252209"; 
 
-  // 🔹 Fetch function (city name or lat,long)
+
   const fetchWeather = (query) => {
     if (!query) return;
     setLoading(true);
@@ -30,7 +30,7 @@ function Weather() {
       .finally(() => setLoading(false));
   };
 
-  // 🔹 Search effect (typing city)
+  
   useEffect(() => {
     if (searching.trim().length < 3) return;
 
@@ -41,7 +41,7 @@ function Weather() {
     return () => clearTimeout(debouncing);
   }, [searching]);
 
-  // 🔹 On mount → detect device location
+  
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -49,7 +49,7 @@ function Weather() {
           const { latitude, longitude } = pos.coords;
           fetchWeather(`${latitude},${longitude}`);
         },
-        () => fetchWeather("Kigali") // fallback if blocked
+        () => fetchWeather("Kigali") 
       );
     } else {
       fetchWeather("Kigali");
@@ -64,34 +64,40 @@ function Weather() {
 
       {/* 🔹 Search Section */}
       <div className="p-6 flex flex-col md:flex-row items-center justify-between gap-5 bg-gray-100">
-        <div className="flex flex-col gap-2 w-full md:w-auto">
+        <div className="flex justify-center items-center gap-x-2 ">
           <div className="relative w-full md:w-auto">
-            <input
-              className="border-2 border-gray-400 rounded-lg p-2 pr-16 focus:outline-none w-full md:w-72"
-              placeholder="Enter location..."
-              type="text"
-              value={searching}
-              onChange={(e) => setSearching(e.target.value)}
-            />
+  <input
+    className="border border-gray-400 rounded-lg p-2 pr-16 focus:outline-none w-full md:w-72"
+    placeholder="Enter location..."
+    type="text"
+    value={searching}
+    onChange={(e) => setSearching(e.target.value)}
+  />
+  <button
+    onClick={() => fetchWeather(searching)}
+    className="absolute right-2 top-1/2 -translate-y-1/2 bg-gray-300 text-white px-3 py-1 hover:bg-gray-400 transition rounded cursor-pointer"
+  >
+    🔍
+  </button>
+
+  {loading && <p className="text-blue-600 text-sm">Loading...</p>}
+  {error && <p className="text-red-600 text-sm ">{error}</p>}
+</div>
+
+          
+          <div className="flex gap-2 ">
             <button
               onClick={() => fetchWeather(searching)}
-              className="absolute right-0 top-0 bottom-0 bg-gray-300 text-white px-3 hover:bg-gray-400 transition rounded cursor-pointer"
+              className="border border-gray-400 rounded-lg  focus:outline-none w-full md:w-72"
             >
-              🔍
-            </button>
-          </div>
-
-          {/* 🔹 Loading & Error BELOW input */}
-          {loading && <p className="text-blue-600 text-sm">Loading...</p>}
-          {error && <p className="text-red-600 text-sm">{error}</p>}
-
-          {/* 🔹 Buttons for Finded & Current Location */}
-          <div className="flex gap-3 mt-2">
-            <button
-              onClick={() => fetchWeather(searching)}
-              className="border-2 border-gray-700 rounded-xl px-4 py-2 hover:bg-gray-200 transition"
-            >
-              Finded Location
+              {location && (
+        
+          <h2 className="text-lg">
+            {location.name}, {location.country}
+          </h2>
+          
+        
+      )}
             </button>
 
             <button
@@ -108,7 +114,7 @@ function Weather() {
                   fetchWeather("Kigali");
                 }
               }}
-              className="border-2 border-gray-700 rounded-xl px-4 py-2 hover:bg-gray-200 transition"
+              className="border border-gray-400 rounded-lg p-2 focus:outline-none w-half md:w-72"
             >
               Current Location
             </button>
@@ -116,12 +122,12 @@ function Weather() {
         </div>
 
         <div className="flex gap-4">
-          <select className="border-2 border-gray-700 rounded-xl cursor-pointer p-2">
+          <select className="border border-gray-700 rounded-xl cursor-pointer p-2">
             <option value="dark theme">Dark Theme</option>
             <option value="white theme">White Theme</option>
           </select>
 
-          <select className="border-2 border-gray-700 rounded-xl cursor-pointer p-2">
+          <select className="border border-gray-700 rounded-xl cursor-pointer p-2">
             <option value="celsius">Celsius</option>
             <option value="fahrenheit">Fahrenheit</option>
           </select>
