@@ -62,7 +62,7 @@ function Weather() {
         Weather App
       </h2>
 
-      {/* 🔹 Search Section */}
+      
       <div className="p-6 flex flex-col md:flex-row items-center justify-between gap-5 bg-gray-100">
         <div className="flex justify-center items-center gap-x-2 ">
           <div className="relative w-full md:w-auto">
@@ -108,7 +108,7 @@ function Weather() {
                       const { latitude, longitude } = pos.coords;
                       fetchWeather(`${latitude},${longitude}`);
                     },
-                    () => fetchWeather("Kigali") // fallback
+                    () => fetchWeather("Kigali") 
                   );
                 } else {
                   fetchWeather("Kigali");
@@ -134,7 +134,7 @@ function Weather() {
         </div>
       </div>
 
-      {/* 🔹 Location Info */}
+      
       {location && (
         <div className="p-5 text-center text-gray-700">
           <h2 className="text-lg font-semibold">
@@ -144,7 +144,7 @@ function Weather() {
         </div>
       )}
 
-      {/* 🔹 Weather Info */}
+      
       {info && (
         <div className="bg-gradient-to-b from-sky-800 to-sky-900 text-white w-[90%] md:w-[70%] mx-auto p-6 rounded-2xl shadow-lg">
           <h2 className="text-2xl font-bold mb-3">Current Weather</h2>
