@@ -31,10 +31,10 @@ import { useState, useEffect } from 'react';
                     
                     <div className="text-center mb-16">
                         <div className="w-24 h-24 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white text-3xl font-bold mx-auto mb-6">
-                            JD
+                            MO
                         </div>
                         <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">
-                            John Developer
+                            Masabo Olivier
                         </h1>
                         <div className="flex flex-wrap justify-center gap-4 mb-8">
                             <span className="px-4 py-2 bg-blue-500 bg-opacity-20 border border-blue-400 rounded-full text-blue-300 text-sm">
@@ -176,20 +176,20 @@ import { useState, useEffect } from 'react';
                                     <span className="px-3 py-1 bg-yellow-500 bg-opacity-20 text-yellow-300 border border-yellow-400 rounded-full text-xs font-medium">
                                         In Progress
                                     </span>
-                                    <button className="text-blue-400 hover:text-blue-300 text-sm font-medium">
+                                    <button className="text-blue-400 hover:text-blue-300 text-sm font-medium cursor-pointer">
                                         View →
                                     </button>
                                 </div>
                             </div>
                             
                             <div className="bg-gray-700 bg-opacity-30 border border-gray-600 rounded-2xl p-6 hover:border-gray-500 transition-all duration-300">
-                                <h3 className="text-xl font-bold text-white mb-2">Task Management App</h3>
+                                <h3 className="text-xl font-bold text-white mb-2">Student management system</h3>
                                 <p className="text-gray-400 text-sm mb-4">React, Tailwind CSS</p>
                                 <div className="flex items-center justify-between">
                                     <span className="px-3 py-1 bg-green-500 bg-opacity-20 text-green-300 border border-green-400 rounded-full text-xs font-medium">
                                         Completed
                                     </span>
-                                    <button className="text-blue-400 hover:text-blue-300 text-sm font-medium">
+                                    <button className="text-blue-400 hover:text-blue-300 text-sm font-medium cursor-pointer">
                                         View →
                                     </button>
                                 </div>
@@ -202,7 +202,7 @@ import { useState, useEffect } from 'react';
                                     <span className="px-3 py-1 bg-green-500 bg-opacity-20 text-green-300 border border-green-400 rounded-full text-xs font-medium">
                                         Completed
                                     </span>
-                                    <button className="text-blue-400 hover:text-blue-300 text-sm font-medium">
+                                    <button className="text-blue-400 hover:text-blue-300 text-sm font-medium cursor-pointer">
                                         View →
                                     </button>
                                 </div>
