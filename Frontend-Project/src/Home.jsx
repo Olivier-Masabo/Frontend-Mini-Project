@@ -132,13 +132,13 @@ import { useState, useEffect } from 'react';
                             <div className="bg-gray-700 bg-opacity-50 rounded-xl p-1 flex">
                                 <button 
                                     onClick={() => setActiveTab('frontend')}
-                                    className={`px-6 py-2 rounded-lg transition-all duration-300 ${activeTab === 'frontend' ? 'bg-blue-600 text-white shadow-lg' : 'text-gray-400 hover:text-white'}`}
+                                    className={` cursor-pointer px-6 py-2 rounded-lg transition-all duration-300 ${activeTab === 'frontend' ? 'bg-blue-600 text-white shadow-lg' : 'text-gray-400 hover:text-white'}`}
                                 >
                                     Frontend
                                 </button>
                                 <button 
                                     onClick={() => setActiveTab('backend')}
-                                    className={`px-6 py-2 rounded-lg transition-all duration-300 ${activeTab === 'backend' ? 'bg-green-600 text-white shadow-lg' : 'text-gray-400 hover:text-white'}`}
+                                    className={`cursor-pointer px-6 py-2 rounded-lg transition-all duration-300 ${activeTab === 'backend' ? 'bg-green-600 text-white shadow-lg' : 'text-gray-400 hover:text-white'}`}
                                 >
                                     Backend
                                 </button>
@@ -217,17 +217,17 @@ import { useState, useEffect } from 'react';
                         <div className="bg-gray-800 bg-opacity-50 rounded-3xl p-8 shadow-xl border border-gray-700 inline-block">
                             <h2 className="text-2xl font-bold text-white mb-6">Let's Connect</h2>
                             <div className="flex justify-center space-x-4 mb-6">
-                                <button className="px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-xl font-medium transition-all duration-200 shadow-lg transform hover:scale-105">
+                                <button className="cursor-pointer px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-xl font-medium transition-all duration-200 shadow-lg transform hover:scale-105">
                                     Get In Touch
                                 </button>
-                                <button className="px-8 py-3 border border-gray-500 text-gray-300 hover:text-white hover:border-gray-400 rounded-xl font-medium transition-all duration-200">
+                                <button className="px-8 py-3 border border-gray-500 text-gray-300 hover:text-white hover:border-gray-400 rounded-xl font-medium transition-all duration-200 cursor-pointer">
                                     View Resume
                                 </button>
                             </div>
                             <div className="flex justify-center space-x-6">
-                                <button className="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer"><a href="https://github.com/Olivier-Masabo">GitHub</a></button>
+                                <button className="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer"><a href="https://github.com/Olivier-Masabo" target='_blanck'>GitHub</a></button>
                                 <button className="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">LinkedIn</button>
-                                <button className="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Twitter</button>
+                                <button className="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Whatsapp</button>
                             </div>
                         </div>
                     </div>
