@@ -63,7 +63,7 @@ function Weather() {
       </h2>
 
       
-      <div className="p-6 flex flex-col md:flex-row items-center justify-between gap-5 bg-gray-100">
+      <div className="p-6 flex flex-col md:flex-row items-center justify-between gap-5 bg-zinc-200 mt-5 mb-5 rounded-xl shadow-2xl shadow-gray-400">
         <div className="flex justify-center items-center gap-x-2 ">
           <div className="relative w-full md:w-auto">
   <input
@@ -97,7 +97,7 @@ function Weather() {
           </h2>
           
         
-      )}
+       )}
             </button>
 
             <button
@@ -194,8 +194,8 @@ function Weather() {
         </div>
       )}
 
-      <footer className="text-center text-gray-600 mt-10 p-4 border-t">
-        <p>🌍 Powered by WeatherAPI | Designed with ❤️</p>
+      <footer className="text-center text-gray-600 mt-10 p-10 border-t  bg-zinc-300 mb-5 rounded-xl shadow-top-2xl shadow-gray-300">
+        <p>🌍 Powered by WeatherAPI | Designed with Me❤️</p>
       </footer>
     </>
   );

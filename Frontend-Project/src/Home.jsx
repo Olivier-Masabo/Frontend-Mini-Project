@@ -9,17 +9,20 @@ import { useState, useEffect } from 'react';
     }, []);
 
     const frontendSkills = [
-        { name: 'React.js', level: 85, color: 'bg-blue-500' },
-        { name: 'JavaScript', level: 80, color: 'bg-yellow-500' },
+        { name: 'React.js', level: 75, color: 'bg-blue-500' },
+        { name: 'JavaScript', level: 78, color: 'bg-yellow-500' },
+        {name:"Git", level:68, color:'bg-lime-500'},
         { name: 'Tailwind CSS', level: 90, color: 'bg-teal-500' },
         { name: 'HTML/CSS', level: 95, color: 'bg-orange-500' }
+       
     ];
 
     const backendSkills = [
         { name: 'Node.js', level: 65, color: 'bg-green-500' },
         { name: 'PostgreSQL', level: 55, color: 'bg-blue-600' },
         { name: 'Express.js', level: 60, color: 'bg-gray-600' },
-        { name: 'APIs', level: 70, color: 'bg-purple-500' }
+        { name: 'APIs', level: 70, color: 'bg-purple-500' },
+        {name:"Git", level:68, color:'bg-lime-500'}
     ];
 
     const currentSkills = activeTab === 'frontend' ? frontendSkills : backendSkills;
@@ -31,10 +34,10 @@ import { useState, useEffect } from 'react';
                     
                     <div className="text-center mb-16">
                         <div className="w-24 h-24 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white text-3xl font-bold mx-auto mb-6">
-                            MO
+                            OM
                         </div>
                         <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">
-                            Masabo Olivier
+                            Olivier Masabo
                         </h1>
                         <div className="flex flex-wrap justify-center gap-4 mb-8">
                             <span className="px-4 py-2 bg-blue-500 bg-opacity-20 border border-blue-400 rounded-full text-blue-300 text-sm">
@@ -72,9 +75,9 @@ import { useState, useEffect } from 'react';
                                 intuitive user experiences that solve real-world problems.
                             </p>
                             <div className="flex flex-wrap gap-2">
-                                <span className="px-3 py-1 bg-blue-500 bg-opacity-20 text-blue-300 rounded-full text-sm border border-blue-400">Problem Solver</span>
-                                <span className="px-3 py-1 bg-blue-500 bg-opacity-20 text-blue-300 rounded-full text-sm border border-blue-400">Team Player</span>
-                                <span className="px-3 py-1 bg-blue-500 bg-opacity-20 text-blue-300 rounded-full text-sm border border-blue-400">Fast Learner</span>
+                                <span className="px-3 py-1 bg-blue-500 bg-opacity-20 text-white rounded-full text-sm border border-blue-400">Problem Solver</span>
+                                <span className="px-3 py-1 bg-blue-500 bg-opacity-20 text-white rounded-full text-sm border border-blue-400">Team Player</span>
+                                <span className="px-3 py-1 bg-blue-500 bg-opacity-20 text-white rounded-full text-sm border border-blue-400">Fast Learner</span>
                             </div>
                         </div>
 
@@ -89,7 +92,7 @@ import { useState, useEffect } from 'react';
                                 <div className="space-y-2">
                                     <div className="flex justify-between text-sm">
                                         <span className="text-gray-300">Master full-stack development</span>
-                                        <span className="text-blue-400">70%</span>
+                                        <span className="text-blue-400">68%</span>
                                     </div>
                                     <div className="w-full bg-gray-700 rounded-full h-2">
                                         <div className="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full w-3/4"></div>
@@ -98,7 +101,7 @@ import { useState, useEffect } from 'react';
                                 <div className="space-y-2">
                                     <div className="flex justify-between text-sm">
                                         <span className="text-gray-300">Build production-ready apps</span>
-                                        <span className="text-blue-400">85%</span>
+                                        <span className="text-blue-400">70%</span>
                                     </div>
                                     <div className="w-full bg-gray-700 rounded-full h-2">
                                         <div className="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full" style={{width: '85%'}}></div>
@@ -222,9 +225,9 @@ import { useState, useEffect } from 'react';
                                 </button>
                             </div>
                             <div className="flex justify-center space-x-6">
-                                <button className="text-gray-400 hover:text-white transition-colors duration-200">GitHub</button>
-                                <button className="text-gray-400 hover:text-white transition-colors duration-200">LinkedIn</button>
-                                <button className="text-gray-400 hover:text-white transition-colors duration-200">Twitter</button>
+                                <button className="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer"><a href="https://github.com/Olivier-Masabo">GitHub</a></button>
+                                <button className="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">LinkedIn</button>
+                                <button className="text-gray-400 hover:text-white transition-colors duration-200 cursor-pointer">Twitter</button>
                             </div>
                         </div>
                     </div>
