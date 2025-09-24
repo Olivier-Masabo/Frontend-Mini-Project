@@ -13,6 +13,10 @@ import { useState } from "react";
     setTask(item =>[...item,newTask])
     setNewTask("")
    }
+   function deletebtn(index){
+    const deleting =task.filter((_,i) =>i !==index);
+    setTask(deleting)
+   }
 
     return(
         <>
@@ -45,7 +49,7 @@ import { useState } from "react";
             <span>{element}</span>
             <div className="flex justify-evenly">
             <button className="cursor-pointer ml-10 p-1 hover:bg-gray-300">🖋️</button>
-            <button className="cursor-pointer ml-3 p-1 hover:bg-gray-300">❌</button>
+            <button onClick={() =>deletebtn(index)} className="cursor-pointer ml-3 p-1 hover:bg-gray-300">❌</button>
             </div>
           </li>
           )}
