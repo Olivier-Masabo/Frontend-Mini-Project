@@ -4,6 +4,7 @@ import './App.css'
 import Calculator from './calculator'
 import Weather from './Weather'
 import Home from './Home'
+import TodoList from './TodoList';
 
 function App() {
 
@@ -21,6 +22,9 @@ function App() {
         <Link to="/weather" className="text-blue-900 font-bold text-xl hover:underline">
           Weather-App
         </Link>
+         <Link to="/Todolist" className="text-blue-900 font-bold text-xl hover:underline">
+          TodoList-App
+        </Link>
       </nav>
 
       <Routes>
@@ -28,6 +32,7 @@ function App() {
          <Route path="/home" element={<Home />} />
         <Route path="/calculator" element={<Calculator />} />
         <Route path="/weather" element={<Weather />} />
+        <Route path="//TodoList" element={<TodoList/>}/>
       </Routes>
 
 
