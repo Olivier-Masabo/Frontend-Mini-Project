@@ -1,10 +1,11 @@
  import Router from "express"
- import{ getList,getListByNum} from "./controllers.js"
+ import{ getTask,getTaskByNum,addTask} from "./controllers.js"
 
  const router = Router();
 
- router.get('/',getList)
- router.use("/:number",getListByNum)
+ router.get('/',getTask);
+ router.use("/:number",getTaskByNum);
+ router.post("/",addTask);
  
 
  export default router;

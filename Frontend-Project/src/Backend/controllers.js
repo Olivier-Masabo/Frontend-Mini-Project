@@ -1,18 +1,34 @@
  import pool from "./database.js"
- import {getListQuery,getListByNumber} from "./queries.js";
- const getList = (req,res) =>{
-   pool.query(getListQuery,(error, result) =>{
+ import {getTaskQuery,getTaskByNumber,addTask,checkTaskExistance,addTasks} from "./queries.js";
+ const getTask = (req,res) =>{
+   pool.query(getTaskQuery,(error, result) =>{
     if(error) throw error;
     res.status(200).json(result.rows)
    })
  }
 
- const getListByNum =(req,res) =>{
+ const getTaskByNum =(req,res) =>{
   const number = (req.params.number)
-  pool.query(getListByNumber,[number],(error,result) =>{
+  pool.query(getTaskByNumber,[number],(error,result) =>{
    if(error) throw error;
     res.status(200).json(result.rows)
   })
  }
 
- export {getList,getListByNum};
+ const addTask = (req,res) =>{
+  const {task} =req.body;
+  // check if task exist
+  pool.query(checkTaskExistance,[task],(error,result) =>{
+    if(result.rows.length){
+      res.send("Task already exist")
+    }
+  })
+// add task if it not existed;
+ 
+pool.query(addTasks,[task],(error,result) =>{
+  if(error) throw error
+  res.status(201).send("task created successfully");
+})
+ }
+
+ export {getTask,getTaskByNum,addTask};
