@@ -37,15 +37,15 @@ import { useState } from "react";
           </ul>
         </div>
 
-        <div className="border border-gray-600 showdow-2xl shadow-neutral-600 rounded-2xl w-[60%] h-auto px-5 py-7 text-center">
+        <div className="border border-gray-600 showdow-2xl shadow-neutral-600 rounded-2xl w-[65%] h-auto px-5 py-7 text-center">
             <h1 className="font-semibold text-2xl mb-5">Create your list here</h1>
-            <input value={newTask} onChange={handleInput} className="border border-gray-500 py-3 px-2 outline-hidden w-[45%] rounded-l-lg" type="text" placeholder="Enter task here..." />
+            <input value={newTask} onChange={handleInput} className="border border-gray-500 py-3 px-2 outline-hidden w-[57%] rounded-l-lg" type="text" placeholder="Enter task here..." />
             <button  onClick={addTask} className=" cursor-pointer border border-gray-500 py-3 px-3 bg-green-600 text-md hover:bg-green-400 text-white ">Add</button>
         <div>
 
         <ol className="w-full flex flex-col items-center">
           {task.map((element,index) => 
-          <li className="bg-gray-100 shadow-xl py-3 px-2 shadow-gray-200 w-[52%] mt-3 text-lg rounded-xl flex justify-between" key={index}>
+          <li className="bg-gray-100 shadow-xl py-3 px-2 shadow-gray-200 w-[64%] mt-3 text-lg rounded-xl flex justify-between" key={index}>
             <span>{element}</span>
             <div className="flex justify-evenly">
             <button className="cursor-pointer ml-10 p-1 hover:bg-gray-300">🖋️</button>

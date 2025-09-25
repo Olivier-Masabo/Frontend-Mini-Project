@@ -1,9 +1,10 @@
- import {Router} from "express"
+ import Router from "express"
+ import{ getList,getListByNum} from "./controllers.js"
 
  const router = Router();
 
- router.get('/',(req,res) =>{
-    res.send("Using Api route")
- })
+ router.get('/',getList)
+ router.use("/:number",getListByNum)
+ 
 
- module.exports =router;
+ export default router;

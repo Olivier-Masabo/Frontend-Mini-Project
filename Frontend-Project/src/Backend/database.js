@@ -4,9 +4,9 @@ import { Pool } from 'pg';
     user:"postgres",
     host:"localhost",
     database:"todolist",
-    password:"test",
+    password:"12345",
     port:5432,
  })
 
- module.exports = pool;
+export default pool;
 
