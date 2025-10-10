@@ -55,8 +55,12 @@ import { useState } from "react";
           )}
         </ol>
           </div>
+          
         
         </div>
+        </div>
+        <div>
+         <div className="w-[40%] mt-10 px-10 py-2 bg-green-500 text-center text-xl font-semibold text-white rounded-xl">Get all your task here</div>
         </div>
         </>
     )
