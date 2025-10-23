@@ -1,22 +1,55 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
  function TodoList(){
 
   const[task,setTask] = useState([])
   const[newTask,setNewTask] = useState("")
+  const api = "http://localhost:8080/api/list";
 
-  function handleInput(event){
+   function handleInput(event){
     setNewTask(event.target.value);
   }
+
+  const getAllTask = () =>{
+       fetch(api)
+      .then(res=>res.json())
+      .then(data => {
+        setTask(data);
+        console.log(data)})
+    
+      
+   }
+   useEffect(() =>{
+      getAllTask();
+    },[])
+ 
    function addTask(){
     if(newTask ==="" || newTask === null)return false;
-    setTask(item =>[...item,newTask])
-    setNewTask("")
+    fetch(api,{
+      method:"POST",
+      headers:{"Content-Type": "application/json"},
+      body:JSON.stringify({task:newTask})
+
+    })
+    .then(res => res.json())
+    .then(() =>{
+      getAllTask();
+      setNewTask("");
+      console.log(data)
+    })
+    .catch(err => console.error(err));
+    // setTask(item =>[...item,newTask])
+    // setNewTask("")
    }
-   function deletebtn(index){
-    const deleting =task.filter((_,i) =>i !==index);
-    setTask(deleting)
+   function deletebtn(id){
+    fetch(`${api}/${id}`,{method:"DELETE"})
+     .then(() =>{
+       getAllTask();
+     })
+     .catch(err => console.error(err));
    }
+
+
 
     return(
         <>
@@ -44,12 +77,12 @@ import { useState } from "react";
         <div>
 
         <ol className="w-full flex flex-col items-center">
-          {task.map((element,index) => 
+          {task.map((t,index) => 
           <li className="bg-gray-100 shadow-xl py-3 px-2 shadow-gray-200 w-[64%] mt-3 text-lg rounded-xl flex justify-between" key={index}>
-            <span>{element}</span>
+            <span>{t.task}</span>
             <div className="flex justify-evenly">
             <button className="cursor-pointer ml-10 p-1 hover:bg-gray-300">🖋️</button>
-            <button onClick={() =>deletebtn(index)} className="cursor-pointer ml-3 p-1 hover:bg-gray-300">❌</button>
+            <button onClick={() =>deletebtn(t.id)} className="cursor-pointer ml-3 p-1 hover:bg-gray-300">❌</button>
             </div>
           </li>
           )}
@@ -60,7 +93,37 @@ import { useState } from "react";
         </div>
         </div>
         <div>
-         <div className="w-[40%] mt-10 px-10 py-2 bg-green-500 text-center text-xl font-semibold text-white rounded-xl">Get all your task here</div>
+         <div className="w-[60%] mt-10 px-10 py-2 bg-green-500 text-center text-xl font-semibold text-white rounded-xl cursor-pointer hover:bg-green-600 mx-auto"
+               onClick={getAllTask}>Get all your task here</div>
+         <div className="bg-gray-200 w-[90%] mt-10 mx-auto">
+          <table border="1" cellPadding="8" style={{ marginTop: "15px", width: "100%" }}>
+        <thead>
+          <tr>
+            <th className="w-[20%] bg-blue-600">ID</th>
+            <th className="w-[35%] bg-purple-600">Task</th>
+            <th className="w-[35%] bg-lime-500">Create_date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {task.map((t) => (
+            <tr key={t.id}>
+              <td>{t.id}</td>
+              <td>{t.task}</td>
+              <td>{t.created_date}</td>
+              <td>
+                <button onClick={() => deletebtn(t.id)}>Delete</button>
+              </td>
+            </tr>
+          ))}
+          {task.length === 0 && (
+            <tr>
+              <td colSpan="3" style={{ textAlign: "center" }}>No tasks found</td>
+            </tr>
+          )}
+        </tbody>
+      </table>
+
+         </div>
         </div>
         </>
     )
