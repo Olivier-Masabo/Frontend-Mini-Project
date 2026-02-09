@@ -29,7 +29,7 @@ export default function Calculator() {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center p-4">
+        <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-700 flex items-center justify-center p-4">
             <div className="bg-gray-900/90 backdrop-blur-xl rounded-3xl shadow-2xl border border-gray-700/50 p-6 w-full max-w-sm">
                 <div className="text-center mb-6">
                     <h2 className="text-2xl font-bold text-white">Calculator</h2>
